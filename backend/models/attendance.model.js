@@ -41,9 +41,6 @@ const Attendance = sequelize.define(
     ],
   }
 );
-
-// Associations
 Employee.hasMany(Attendance, { foreignKey: 'employeeId', as: 'attendances' });
 Attendance.belongsTo(Employee, { foreignKey: 'employeeId', as: 'employee' });
-
 module.exports = Attendance;

@@ -1,5 +1,4 @@
 'use strict';
-
 require('dotenv').config();
 
 const express = require('express');
@@ -13,20 +12,17 @@ const swaggerSpec = require('./config/swagger');
 const errorHandler = require('./middlewares/errorHandler');
 const notFound = require('./middlewares/notFound');
 
-//const healthRouter = require('./routes/health.routes');
 const employeeRouter = require('./routes/employee.routes');
 const attendanceRouter = require('./routes/attendance.routes');
 
 const app = express();
 
-// ── Security ──────────────────────────────────────────────────────────────────
 app.use(
     helmet({
         crossOriginResourcePolicy: { policy: 'cross-origin' },
     })
 );
 
-// ── CORS ──────────────────────────────────────────────────────────────────────
 app.use(
     cors({
         origin: '*',
@@ -35,14 +31,13 @@ app.use(
     })
 );
 
-// ── Body parsing ──────────────────────────────────────────────────────────────
-app.use(express.json({ limit: '10kb' }));
+//app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// ── HTTP logging ──────────────────────────────────────────────────────────────
+//log
 app.use(pinoHttp({ logger, autoLogging: process.env.NODE_ENV !== 'test' }));
 
-// ── API Docs ──────────────────────────────────────────────────────────────────
+//swagger [api docs
 app.use(
     '/api-docs',
     swaggerUi.serve,
@@ -53,13 +48,11 @@ app.use(
 );
 app.get('/api-docs.json', (_req, res) => res.json(swaggerSpec));
 
-// ── Routes ────────────────────────────────────────────────────────────────────
-const BASE = '/api/v1';
-app.use(`${BASE}/employees`, employeeRouter);
-app.use(`${BASE}/attendance`, attendanceRouter);
+// rouytes
+const BASE_url = '/api/v1';
+app.use(`${BASE_url}/employees`, employeeRouter);
+app.use(`${BASE_url}/attendance`, attendanceRouter);
 
-// ── 404 & Error handlers ──────────────────────────────────────────────────────
 app.use(notFound);
 app.use(errorHandler);
-
 module.exports = app;

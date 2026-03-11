@@ -30,8 +30,6 @@ const getEmployeeById = async (req, res, next) => {
 const createEmployee = async (req, res, next) => {
   try {
     const { employeeId, fullName, email, department } = req.body;
-
-    // Manual duplicate checks with clear messages
     const existingId = await Employee.findOne({ where: { employeeId } });
     if (existingId) return sendError(res, `Employee ID '${employeeId}' already exists`, 409);
 

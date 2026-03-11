@@ -5,7 +5,7 @@ const { Attendance, Employee } = require('../models');
 const { sendSuccess, sendError } = require('../utils/response');
 const logger = require('../utils/logger');
 
-// GET /attendance  (optionally ?employeeId=&startDate=&endDate=)
+// GET /attendance
 const getAllAttendance = async (req, res, next) => {
   try {
     const { employeeId, startDate, endDate } = req.query;
@@ -60,7 +60,7 @@ const markAttendance = async (req, res, next) => {
     const employee = await Employee.findByPk(employeeId);
     if (!employee) return sendError(res, 'Employee not found', 404);
 
-    // Upsert – one record per employee per day
+    // allow only one record per employee per day
     const [record, created] = await Attendance.findOrCreate({
       where: { employeeId, date },
       defaults: { status },

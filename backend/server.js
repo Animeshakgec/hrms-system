@@ -12,7 +12,7 @@ const start = async () => {
     try {
         await connectDB();
         const host = process.env.NODE_ENV === 'production'
-            ? process.env.API_URL                        // e.g. https://hrms-api.onrender.com
+            ? process.env.API_URL
             : `http://localhost:${PORT}`;
 
         const server = app.listen(PORT, () => {

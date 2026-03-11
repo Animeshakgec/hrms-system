@@ -2,8 +2,7 @@
 
 const { z } = require('zod');
 
-// ── Employee ──────────────────────────────────────────────────────────────────
-
+//Employee 
 const createEmployeeSchema = z.object({
   body: z.object({
     employeeId: z
@@ -34,7 +33,7 @@ const employeeIdParamSchema = z.object({
   }),
 });
 
-// ── Attendance ────────────────────────────────────────────────────────────────
+//Attendance
 
 const markAttendanceSchema = z.object({
   body: z.object({

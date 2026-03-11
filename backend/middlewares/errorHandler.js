@@ -1,5 +1,4 @@
 'use strict';
-
 const { UniqueConstraintError, ValidationError } = require('sequelize');
 const { sendError } = require('../utils/response');
 const logger = require('../utils/logger');
@@ -11,7 +10,7 @@ const errorHandler = (err, req, res, _next) => {
   // Sequelize unique constraint
   if (err instanceof UniqueConstraintError) {
     const fields = err.errors.map((e) => e.message);
-    return sendError(res, 'Duplicate entry – record already exists', 409, fields);
+    return sendError(res, 'Duplicate entry record already exists', 409, fields);
   }
 
   // Sequelize general validation
