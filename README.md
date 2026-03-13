@@ -1,4 +1,5 @@
 # HRMS-system
+First start service by clicking on hosted server link snd then frontend link 
 
 ### 🔗 Links
 
