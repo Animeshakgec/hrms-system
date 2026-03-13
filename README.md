@@ -2,9 +2,13 @@
 
 ### 🔗 Links
 
-[Live Frontend](https://hrms-system-khaki.vercel.app/)
-[Live Backend API](https://hrms-backend.onrender.com/api/v1)
-[Swagger API Docs](https://hrms-system-7rne.onrender.com/api-docs)
+Live Frontend : (https://hrms-system-khaki.vercel.app/)
+
+
+Live Backend API : (https://hrms-backend.onrender.com/api/v1)
+
+
+Swagger API Docs : (https://hrms-system-7rne.onrender.com/api-docs)
 ---
 
 ## Project Overview
