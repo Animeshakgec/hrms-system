@@ -3,10 +3,11 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 
 const getServerUrl = () => {
-    if (process.env.NODE_ENV === 'production') {
-        return `${process.env.API_URL}/api/v1`;
-    }
-    return `http://localhost:${process.env.PORT || 5000}/api/v1`;
+    const baseUrl =
+        process.env.API_URL ||
+        `http://localhost:${process.env.PORT || 5000}`;
+
+    return `${baseUrl}/api/v1`;
 };
 
 const options = {

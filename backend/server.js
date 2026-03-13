@@ -11,9 +11,9 @@ const PORT = parseInt(process.env.PORT, 10) || 5000;
 const start = async () => {
     try {
         await connectDB();
-        const host = process.env.NODE_ENV === 'production'
-            ? process.env.API_URL
-            : `http://localhost:${PORT}`;
+        const host =
+            process.env.API_URL ||
+            `http://localhost:${PORT}`;
 
         const server = app.listen(PORT, () => {
             // logger.info(`HRMS API running on http://localhost:${PORT}`);
